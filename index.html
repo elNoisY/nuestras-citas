@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Citas ❤️</title>
+    <!-- Vinculamos el archivo CSS externo -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1>Nuestras Citas ❤️</h1>
+        <p>Lugares por descubrir y recuerdos por guardar</p>
+    </header>
+
+    <!-- Contenedor donde se cargarán las citas -->
+    <div id="container-citas"></div>
+
+    <!-- Botón Flotante -->
+    <button class="btn-flotante" onclick="abrirModalNuevaCita()">+</button>
+
+    <!-- MODAL 1: AGREGAR NUEVA CITA -->
+    <div id="modal-nueva-cita" class="modal">
+        <div class="modal-content">
+            <h3>Nueva Aventura</h3>
+            <label>¿A dónde irán o qué harán?</label>
+            <input type="text" id="nuevo-nombre-cita" placeholder="Ej: Ir por helados, Picnic...">
+            <button class="btn-guardar" onclick="guardarNuevaCita()">Agregar Cita</button>
+            <button class="btn-cerrar" onclick="cerrarModal('modal-nueva-cita')">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: MARCAR COMO COMPLETADA -->
+    <div id="modal-completar-cita" class="modal">
+        <div class="modal-content">
+            <h3>¡Cita Cumplida! 🥰</h3>
+            <input type="hidden" id="completar-id">
+            
+            <label>¿Qué día fue?</label>
+            <input type="date" id="completar-fecha">
+
+            <label>Un bonito comentario o recuerdo:</label>
+            <textarea id="completar-comentario" rows="4" placeholder="Escribe aquí lo mejor de la cita..."></textarea>
+
+            <label>Subir fotos del recuerdo:</label>
+            <input type="file" id="completar-fotos" multiple accept="image/*">
+
+            <button class="btn-guardar" style="margin-top: 15px;" onclick="guardarCitaCumplida()">Guardar Recuerdos</button>
+            <button class="btn-cerrar" onclick="cerrarModal('modal-completar-cita')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: VER DETALLES DE LA CITA -->
+    <div id="modal-detalle-cita" class="modal">
+        <div class="modal-content">
+            <h3 id="detalle-titulo"></h3>
+            <p><strong>Fecha:</strong> <span id="detalle-fecha"></span></p>
+            <p><strong>Recuerdo:</strong></p>
+            <p id="detalle-comentario" style="background: #f9f9f9; padding: 10px; border-radius: 8px; font-style: italic;"></p>
+            <p><strong>Fotos:</strong></p>
+            <div id="detalle-galeria" class="galeria-fotos"></div>
+            <button class="btn-cerrar" style="background: var(--primary-color); color: white;" onclick="cerrarModal('modal-detalle-cita')">Volver</button>
+        </div>
+    </div>
+
+    <!-- Vinculamos el archivo de lógica JavaScript antes de cerrar el body -->
+    <script src="js/app.js"></script>
+</body>
+</html>
